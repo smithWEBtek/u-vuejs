@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>VueJS</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ title }}</h1>
+    <h1>{{ counter }}</h1>
+    <button v-on:click='counterIncrease'><h1>+</h1></button>
+    <button v-on:click='counterDecrease'><h1>-</h1></button>
+    <hr>
+    <p v-on:mousemove='updateCoordinates'>Coordinates: {{ x }} : {{ y }}</p>
+  </div>
+
+
+</body>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      counter: 0,
+      title: 'Getting data from event',
+      x: '',
+      y: ''
+    },
+    methods: {
+      updateCoordinates: function (event) {
+        console.log('event.clientX:', event.clientX);
+        console.log('event.clientY:', event.clientY);
+
+        this.x = event.clientX, this.y = event.clientY
+      },
+      counterIncrease: function() {
+        console.log('counterIncrease ...');
+        this.counter++
+      },
+      counterDecrease: function() {
+        console.log('counterDecrease ...');
+        this.counter--
+    }
+  }
+})
+</script>
+
+</html>

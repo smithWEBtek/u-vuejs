@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>VueJS</title>
+</head>
+<body>
+  <div id="app">
+    <h1>{{ counter }}</h1>
+    <button v-on:click='counterIncrease'><h1>+</h1></button>
+    <button v-on:click='counterDecrease'><h1>-</h1></button>
+  </div>
+
+
+</body>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      counter: 0
+    },
+    methods: {
+      counterIncrease: function() {
+        console.log('counterIncrease ...');
+        this.counter++
+      },
+      counterDecrease: function() {
+        console.log('counterDecrease ...');
+        this.counter--
+    }
+  }
+})
+</script>
+
+</html>

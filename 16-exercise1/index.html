@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>VueJS</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-on:input="changeTitle">
+    <h3 v-once>{{ title }}</h3>
+    <p>{{ greeting }} {{ date.toLocaleDateString() }}</p>
+    <p>Visit our piano site: <a v-bind:href="smithpianoHref">SmithPiano.com</a></p>
+    <p>Visit our jquery tutorial:
+      <button v-html="smithwebtekLink"></button>
+    </p>
+    <hr>
+    <button v-on:click="sayHello">Hi</button>
+  </div>
+
+  <hr>
+  <hr>
+  <hr>
+
+  <div id="exercise">
+    <!-- 1) Fill the <p> below with your Name and Age - using Interpolation -->
+    <h2>1: </h2><p>VueJS is pretty cool - {{ name }} ({{ age }})</p>
+    <!-- 2) Output your age, multiplied by 3 -->
+    <h2>2: </h2><p>my age x 3 = {{ age * 3}}</p>
+    <!-- 3) Call a function to output a random float between 0 and 1 (Math.random()) -->
+    <h2>3: </h2><p>Our random number today is: {{ randomFloat() }} </p>
+    <!-- 4) Search any image on Google and output it here by binding the "src" attribute -->
+    <h2>4: </h2><div>
+        <p>The Internet would not run without cat pics.</p>
+        <img v-bind:src="myCatPic" style="width:100px;height:100px">
+    </div>
+    <!-- 5) Pre-Populate this input with your name (set the "value" attribute) -->
+    <div>
+        <h2>5: </h2><input type="text" v-bind:value="name">
+    </div>
+</div>
+</body>
+
+<script>
+  new Vue({
+    el: '#exercise',
+    data: {
+      title: 'VueJS course with Max!',
+      greeting: 'Hey there, today is: ',
+      date: new Date,
+      smithpianoHref: 'https://www.smithpiano.com',
+      smithwebtekLink: `<a href="http://www.smithwebtek.com/asdf" target='blank'>jquery tutorial</a>`,
+      counter: 0,
+      name: 'Brad Smith',
+      age: 57,
+      randomFloat: () => Math.random(),
+      myCatPic: 'https://cdn.pixabay.com/photo/2014/11/30/14/11/kitty-551554__340.jpg'
+    },
+    methods: {
+      changeTitle: function(event){
+        this.title = event.target.value
+      },
+      sayHello: function(){
+        let theDate = new Date
+
+        console.log('sayHello button mouse over event');
+        console.log('date: ', theDate);
+
+        this.title=`${ this.counter++ }: Hello! today is: ${theDate.toLocaleDateString()}`
+        return 'Hello!'
+      }
+    }
+  })
+</script>
+
+</html>

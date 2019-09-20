@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>VueJS</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-on:input="changeTitle">
+    <h3 v-once>{{ title }}</h3>
+    <p>{{ greeting }} {{ date.toLocaleDateString() }}</p>
+    <hr>
+    <h1>{{ counter }}</h1>
+    <button v-bind:click='counterIncrease'><h1>+</h1></button>
+
+    <button v-bind:click='counterDecrease'><h1>-</h1></button>
+  </div>
+
+
+</body>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      title: 'VueJS course with Max!',
+      greeting: 'Hey there, today is: ',
+      date: new Date,
+      smithpianoHref: 'https://www.smithpiano.com',
+      smithwebtekLink: `<a href="http://www.smithwebtek.com/asdf" target='blank'>jquery tutorial</a>`,
+      counter: 0,
+      name: 'Brad Smith',
+      age: 57,
+      randomFloat: () => Math.random(),
+      myCatPic: 'https://cdn.pixabay.com/photo/2014/11/30/14/11/kitty-551554__340.jpg'
+    },
+    methods: {
+      changeTitle: function(event){
+        this.title = event.target.value
+      },
+      sayHello: function(){
+        let theDate = new Date
+
+        console.log('sayHello button mouse over event');
+        console.log('date: ', theDate);
+
+        this.title=`${ this.counter++ }: Hello! today is: ${theDate.toLocaleDateString()}`
+        return 'Hello!'
+      },
+      counterIncrease: function() {
+        this.counter++
+      },
+      counterDecrease: () => this.counter--
+    }
+  })
+</script>
+
+</html>
