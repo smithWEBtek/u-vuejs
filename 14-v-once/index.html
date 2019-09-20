@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>VueJS</title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-on:input="changeTitle">
+    <h3 v-once>{{ title }}</h3>
+    <p>{{ greeting }} {{ date.toLocaleDateString() }}</p>
+    <p>Visit our piano site: <a v-bind:href="smithpianoHref">SmithPiano.com</a></p>
+    <p>Visit our jquery tutorial:
+      <button v-html="smithwebtekLink"></button>
+    </p>
+    <hr>
+    <button v-on:click="sayHello">Hi</button>
+  </div>
+</body>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      title: 'VueJS course with Max!',
+      greeting: 'Hey there, today is: ',
+      date: new Date,
+      smithpianoHref: 'https://www.smithpiano.com',
+      smithwebtekLink: `<a href="http://www.smithwebtek.com/asdf" target='blank'>jquery tutorial</a>`,
+      counter: 0
+    },
+    methods: {
+      changeTitle: function(event){
+        this.title = event.target.value
+      },
+      sayHello: function(){
+        let theDate = new Date
+
+        console.log('sayHello button mouse over event');
+        console.log('date: ', theDate);
+
+        this.title=`${ this.counter++ }: Hello! today is: ${theDate.toLocaleDateString()}`
+        return 'Hello!'
+      }
+    }
+  })
+</script>
+
+</html>
