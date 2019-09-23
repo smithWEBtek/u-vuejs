@@ -17,8 +17,8 @@
     <hr>
     <p v-on:mousemove='updateCoordinates'>
       Coordinates: {{ x }} : {{ y }}
-      - <span v-on:mousemove="dummy">DEAD SPOT</span>
-      <!-- - <span v-on:mousemove.stop="">DEAD SPOT</span> -->
+      <!-- - <span v-on:mousemove="dummy">DEAD SPOT</span> -->
+      - <span v-on:mousemove.stop="">DEAD SPOT</span>
       <!-- vue provides .stop for event.stopPropagation() -->
       <!-- vue provides .prevdent for event.preventDefault() -->
       <!-- - <span v-on:mousemove.stop.prevent="">DEAD SPOT</span> -->
