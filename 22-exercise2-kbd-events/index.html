@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="./vue.js"></script>
+  <title>Excersize2 Keyboard Events</title>
+</head>
+<body>
+  <div id="exercise">
+    <!-- 1) Show alert when button clicked -->
+    <div>
+      <button>Show Alert</button>
+    </div>
+    <!-- )2 Listen to 'keydown' -->
+    <!--    store entries in a data property' -->
+    <!--    hint: event.target.value gives you data -->
+    <div>
+      <input type="text" v-on:keydown='captureDataEntry($event)'>
+      <p>{{ value }}</p>
+    </div>
+
+
+
+  </div>
+
+</body>
+</html>
+
+<script>
+  new Vue({
+    el: '#exercise',
+    data: {
+      name: ''
+    },
+    methods: {
+      captureDataEntry: function(event){
+        this.data.push(event.target.value)
+      }
+    }
+  })
+
+</script>
