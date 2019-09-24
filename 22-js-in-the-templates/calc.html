@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>VueJS</title>
+</head>
+<body>
+  <div id="app">
+    <h2 class="title">{{ title }}</h2>
+    <hr>
+    <div class='result'>
+      <p>{{ value}}</p>
+      <p>{{ result }}</p>
+    </div>
+
+    <button id="clear"  v-on:click="value = ''"><h1>AC</h1></button>
+    <button id="flip"  v-on:click="value += '-'"><h1>+/-</h1></button>
+    <button id="pct"  v-on:click="value *= '.01'"><h1>%</h1></button>
+    <button id="divide"  v-on:click="result = value/= value"><h1>/</h1></button>
+    <br>
+    <button id="seven"  v-on:click="value+= '7'"><h1>7</h1></button>
+    <button id="eight"  v-on:click="value+= '8'"><h1>8</h1></button>
+    <button id="nine"  v-on:click="value+= '9'"><h1>9</h1></button>
+    <button id="multiply"  v-on:click="result = value*= value"><h1>x</h1></button>
+    <br>
+    <button id="four"  v-on:click="value+= '4'"><h1>4</h1></button>
+    <button id="five"  v-on:click="value+= '5'"><h1>5</h1></button>
+    <button id="six"  v-on:click="value+= '6'"><h1>6</h1></button>
+    <button id="subtract"  v-on:click="result = value-= value"><h1>-</h1></button>
+    <br>
+    <button id="one"  v-on:click="value+= '1'"><h1>1</h1></button>
+    <button id="two"  v-on:click="value+= '2'"><h1>2</h1></button>
+    <button id="three"  v-on:click="value+= '3'"><h1>3</h1></button>
+    <button id="add"  v-on:click="plus($event)"><h1>+</h1></button>
+    <br>
+    <button id="zero"  id="zero" v-on:click="value+= '0'"><h1>0</h1></button>
+    <button id="decimal"  v-on:click="value+= '.'"><h1>.</h1></button>
+    <button id="equal"  v-on:click="process"><h1>=</h1></button>
+  </div>
+
+
+</body>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      title: 'Calculator',
+      counter: 0,
+      title: 'The Calculator',
+      description: 'Calculate',
+      value: '',
+      result: ''
+    },
+    methods: {
+      updateCoordinates: function (event) {
+        console.log('event.clientX:', event.clientX);
+        console.log('event.clientY:', event.clientY);
+
+        this.x = event.clientX, this.y = event.clientY
+      },
+      plus: (event) => {
+        value += event.target.value
+      },
+      sum: ()=> {},
+      subtract: ()=> result = value -= value,
+      multiply: ()=> result = value *= value,
+      divide: ()=> result = value /= value,
+      process: (v1, v2, operator)=> result = eval([v1, operator, v2])
+    }
+  })
+</script>
+</html>
+
+<style>
+  html {
+    box-sizing: border-box;
+  }
+
+  #app {
+    background-color: rgb(178, 220, 241);
+    border: 2px solid gray;
+    border-radius: 12px;
+    margin: 10px;
+    padding: 20px;
+    width: 215px;
+  }
+
+  .title {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  button {
+    height: auto;
+    width: 50px;
+    margin: 2px 0;
+  }
+
+  button#zero {
+    width: 104px;
+  }
+
+  .result {
+    background-color: rgb(205, 215, 220);
+    height: 50px;
+    margin: 4px;
+  }
+</style>
