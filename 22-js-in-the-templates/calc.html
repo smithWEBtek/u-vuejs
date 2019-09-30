@@ -10,30 +10,34 @@
 <body>
   <div id="app">
     <h2 class="title">{{ title }}</h2>
-    <hr>
     <div class='result'>
-      <p>{{ entry }} {{ result }}</p>
+      <p v-model='value1'>{{ value1 }}</p>
+      <hr>
+      <p v-model='value2'>{{ value2 }}</p>
+      <hr>
+      <p>{{ result }}</p>
+
     </div>
 
     <button id="clear"  v-on:click="reset"><h1>AC</h1></button>
     <button id="flip"  v-on:click="value += '-'"><h1>+/-</h1></button>
     <button id="pct"  v-on:click="value *= '.01'"><h1>%</h1></button>
-    <button id="divide"  v-on:click="result = value/= value"><h1>/</h1></button>
+    <button id="divide"  v-on:click="equals"><h1>/</h1></button>
     <br>
     <button id="seven"  v-on:click="dataEntry('7')"><h1>7</h1></button>
     <button id="eight"  v-on:click="dataEntry('8')"><h1>8</h1></button>
     <button id="nine"  v-on:click="dataEntry('9')"><h1>9</h1></button>
-    <button id="multiply"  v-on:click="result = value*= value"><h1>x</h1></button>
+    <button id="multiply"  v-on:click="multiply"><h1>x</h1></button>
     <br>
     <button id="four"  v-on:click="dataEntry('4')"><h1>4</h1></button>
     <button id="five"  v-on:click="dataEntry('5')"><h1>5</h1></button>
     <button id="six"  v-on:click="dataEntry('6')"><h1>6</h1></button>
-    <button id="subtract"  v-on:click="result = value-= value"><h1>-</h1></button>
+    <button id="subtract"  v-on:click="subtract"><h1>-</h1></button>
     <br>
     <button id="one"  v-on:click="dataEntry('1')"><h1>1</h1></button>
     <button id="two"  v-on:click="dataEntry('2')"><h1>2</h1></button>
     <button id="three"  v-on:click="dataEntry('3')"><h1>3</h1></button>
-    <button id="add"  v-on:click="plus($event)"><h1>+</h1></button>
+    <button id="add"  v-on:click="sum"><h1>+</h1></button>
     <br>
     <button id="zero"  id="zero" v-on:click="dataEntry('0')"><h1>0</h1></button>
     <button id="decimal"  v-on:click="dataEntry('.')"><h1>.</h1></button>
@@ -52,7 +56,7 @@
       value1: '',
       value2: '',
       currentValue: null,
-      operator: '',
+      operator: null,
       result: ''
     },
     methods: {
@@ -62,18 +66,21 @@
         this.result = ''
         this.operator = ''
       },
-      dataEntry: function(n){
-        this.entry += n
-        this.currentValue += n
+      dataEntry: function(num){
+        this.entry += num
+        this.currentValue += num
+        if(!this.operator){
+          this.value1 = this.currentValue
+        } else {
+          this.value1 = ''
+          this.value2 = this.currentValue
+        }
       },
-      sum: ()=> {
-        this.operator = '+'
-        this.currentValue = value2
-      },
+      sum: ()=> this.operator = '+',
       subtract: ()=> this.operator = '-',
       multiply: ()=> this.operator = '*',
       divide: ()=> this.operator = '/',
-      equals: (v1, v2, operator) => this.result = eval([value1, operator, value2])
+      equals: () => this.result = eval([this.value1, this.operator, this.value2])
     }
   })
 </script>
@@ -109,7 +116,7 @@
 
   .result {
     background-color: rgb(205, 215, 220);
-    height: 50px;
+    height: auto;
     margin: 4px;
   }
 </style>

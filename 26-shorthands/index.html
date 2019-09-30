@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>VueJS - shorthands</title>
+</head>
+<body>
+  <div id="app">
+    <!-- <button v-on:click='counter++'>Increase First</button> -->
+    <!-- @ replaces v-on: -->
+    <button @click='counter++'>Increase First</button>
+
+    <!-- <button v-on:click='counter--'>Decrease First</button> -->
+    <!-- @ replaces v-on: -->
+    <button @click='counter--'>Decrease First</button>
+
+    <!-- <button v-on:click='secondCounter++'>Increase Second</button> -->
+    <!-- @ replaces v-on: -->
+    <button @click='secondCounter++'>Increase Second</button>
+
+    <!-- <button v-on:click='secondCounter--'>Decrease Second</button> -->
+    <!-- @ replaces v-on: -->
+    <button @click='secondCounter--'>Decrease Second</button>
+
+    <p>First Counter: {{ counter }} Second Counter: {{ secondCounter }}</p>
+    <p>Result: {{ result() }}</p>
+    <p>Computed Output: {{ output }}</p>
+
+    <!-- <a v-bind:href='link'>Our Homepage</a> -->
+    <!-- : replaces v-bind: -->
+    <a :href='link'>Our Homepage</a>
+
+  </div>
+</body>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      counter: 0,
+      secondCounter: 0,
+      link: 'http://www.smithwebtek.com'
+
+    },
+    computed: {
+      output: function(){
+        console.log('computed');
+        return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5'
+      }
+    },
+    watch: {
+      counter: function(){
+        console.log('watching ...')
+
+        var vm = this;
+        setTimeout(function(){
+          vm.counter = 0;
+        }, 2000);
+      }
+    },
+    methods: {
+      result: function() {
+        console.log('method');
+        return this.counter > 5 ? 'Greater than 5' : 'Smaller than 5'
+      }
+    }
+  })
+</script>
+</html>
