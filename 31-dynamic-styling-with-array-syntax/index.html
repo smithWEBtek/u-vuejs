@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>VueJS</title>
+
+
+<style>
+    .demo {
+      background-color: lightgray;
+      border: 2px dashed black;
+      height: 100px;
+      /* width: 100px; */
+      display: block;
+      margin: 10px;
+    }
+
+    .red {
+      background-color: red;
+    }
+
+    .green {
+      background-color: green;
+    }
+
+    .blue {
+      background-color: blue;
+    }
+
+    .yellow {
+      background-color: yellow;
+    }
+
+    .button__increase {
+      background-color: lightgreen;
+      border-radius: 15px;
+      font-weight: bold;
+      outline: none;
+      padding: 3px;
+      width: 20px;
+    }
+
+    .button__decrease {
+      background-color: rgb(207, 87, 103);
+      border-radius: 15px;
+      font-weight: bold;
+      outline: none;
+      padding: 3px;
+      width: 20px;
+    }
+
+    .explainer-text {
+      padding: 5px;
+    }
+  </style>
+
+</head>
+<body>
+  <div id="app">
+
+    <div class='demo' :style="{backgroundColor: 'pink', width: myStyle.width}">hard coded color and width from myStyle.width</div>
+    <div class='demo' :style="myStyle"><p class='explainer-text'>using myStyle for width and color from input </p></div>
+    <div class='demo' :style="[myStyle, {height: myStyle.width}]">using myStyle.width to set height</div>
+    <hr>
+    <div>
+      <label>Adjust Width</label>
+      <button class='button__increase' @click='increase'>+</button>
+      <button class='button__decrease' @click='decrease'>-</button>
+    </div>
+    <hr>
+    <input type=text v-model='color'>
+    <input type=text v-model='width'>
+    <hr>
+    </div>
+</body>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      attachRed: false,
+      attachGreen: false,
+      attachBlue: false,
+      attachYellow: false,
+      color: 'gray',
+      width: 150
+    },
+    methods: {
+      setWidth: function(){
+        this.width = myStyle.width
+      },
+      increase: function(){
+        this.width += 3
+      },
+      decrease: function(){
+        this.width -= 3
+      }
+    },
+    computed: {
+      toggleRedBlue: function(){
+        return {
+          red: this.attachRed,
+          blue: !this.attachRed
+        }
+      },
+      myStyle: function(){
+        return {
+          backgroundColor: this.color,
+          width: this.width + 'px'
+        }
+      }
+    }
+  })
+</script>
+</html>

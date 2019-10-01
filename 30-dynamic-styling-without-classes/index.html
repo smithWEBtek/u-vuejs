@@ -13,7 +13,7 @@
       background-color: lightgray;
       border: 2px dashed black;
       height: 100px;
-      width: 100px;
+      /* width: 100px; */
       display: inline-block;
       margin: 10px;
     }
@@ -38,11 +38,11 @@
 </head>
 <body>
   <div id="app">
-    <div class="demo" @click='attachRed = !attachRed' :class="toggleRedBlue">ASDF</div>
-    <div class="demo" @click='attachBlue = !attachBlue' :class="{blue: attachBlue}">ZXCV</div>
-    <div class="demo" @click='attachGreen = !attachGreen' :class="{green: attachGreen}">QWER</div>
-    <div class="demo" :class="[inputColor, {blue: attachBlue}]">SDFG</div>
-    <input type=text v-model='inputColor'>
+    <div class='demo' :style="{backgroundColor: 'pink', width: 'width'}"></div>
+    <div class='demo' :style="myStyle"></div>
+    <hr>
+    <input type=text v-model='color'>
+    <input type=text v-model='width'>
   </div>
 </body>
 
@@ -54,13 +54,20 @@
       attachGreen: false,
       attachBlue: false,
       attachYellow: false,
-      inputColor: 'gray'
+      color: 'gray',
+      width: 100
     },
     computed: {
       toggleRedBlue: function(){
         return {
           red: this.attachRed,
           blue: !this.attachRed
+        }
+      },
+      myStyle: function(){
+        return {
+          backgroundColor: this.color,
+          width: this.width + 'px'
         }
       }
     }
