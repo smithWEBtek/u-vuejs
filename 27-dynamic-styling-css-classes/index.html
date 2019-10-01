@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>VueJS</title>
+
+
+<style>
+    .demo {
+      background-color: lightgray;
+      border: 2px dashed black;
+      height: 100px;
+      width: 100px;
+      display: inline-block;
+      margin: 10px;
+    }
+
+    .red {
+      background-color: red;
+    }
+
+    .green {
+      background-color: green;
+    }
+
+    .blue {
+      background-color: blue;
+    }
+
+    .yellow {
+      background-color: yellow;
+    }
+  </style>
+
+</head>
+<body>
+  <div id="app">
+    <div class="demo" @click='attachRed = !attachRed' :class="{red: attachRed}">ASDF</div>
+    <div class="demo" @click='attachBlue = !attachBlue' :class="{blue: attachBlue}">ZXCV</div>
+    <div class="demo" @click='attachGreen = !attachGreen' :class="{green: attachGreen}">QWER</div>
+    <div class="demo" @click='attachYellow = !attachYellow' :class="{yellow: attachYellow}">SDFG</div>
+  </div>
+</body>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      attachRed: false,
+      attachGreen: false,
+      attachBlue: false,
+      attachYellow: false
+    }
+  })
+  </script>
+</html>
