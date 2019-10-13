@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,16 @@
   <script src="../vue.js"></script>
   <title>VueJS</title>
 </head>
+
 <body>
   <div id="app">
     <input type="text" v-on:input="changeTitle">
-    <h3 v-once>{{ title }}</h3>
+    <h3>{{ title }}</h3>
     <p>{{ greeting }} {{ date.toLocaleDateString() }}</p>
+    <!-- binding just the href attribute -->
     <p>Visit our piano site: <a v-bind:href="smithpianoHref">SmithPiano.com</a></p>
     <p>Visit our jquery tutorial:
+      <!-- binding html, the complete link -->
       <button v-html="smithwebtekLink"></button>
     </p>
     <hr>
@@ -33,16 +37,16 @@
       counter: 0
     },
     methods: {
-      changeTitle: function(event){
+      changeTitle: function (event) {
         this.title = event.target.value
       },
-      sayHello: function(){
+      sayHello: function () {
         let theDate = new Date
 
         console.log('sayHello button mouse over event');
         console.log('date: ', theDate);
 
-        this.title=`${ this.counter++ }: Hello! today is: ${theDate.toLocaleDateString()}`
+        this.title = `${this.counter++}: Hello! today is: ${theDate.toLocaleDateString()}`
         return 'Hello!'
       }
     }

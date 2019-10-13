@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,7 @@
   <title>VueJS</title>
 
 
-<style>
+  <style>
     .demo {
       background-color: lightgray;
       border: 2px dashed black;
@@ -36,12 +37,11 @@
   </style>
 
 </head>
+
 <body>
   <div id="app">
-    <div class="demo" @click='attachRed = !attachRed' :class="toggleRedBlue">ASDF</div>
-    <div class="demo" @click='attachBlue = !attachBlue' :class="{blue: attachBlue}">ZXCV</div>
-    <div class="demo" @click='attachGreen = !attachGreen' :class="{green: attachGreen}">QWER</div>
-    <div class="demo" @click='attachYellow = !attachYellow' :class="{yellow: attachYellow}">SDFG</div>
+    <div class="demo" @click='attachRed = !attachRed' :class="divClasses">ASDF</div>
+    <div class="demo" :class="{blue: attachRed}">ZXCV</div>
   </div>
 </body>
 
@@ -49,13 +49,10 @@
   new Vue({
     el: '#app',
     data: {
-      attachRed: false,
-      attachGreen: false,
-      attachBlue: false,
-      attachYellow: false
+      attachRed: false
     },
     computed: {
-      toggleRedBlue: function(){
+      divClasses: function () {
         return {
           red: this.attachRed,
           blue: !this.attachRed
@@ -63,5 +60,6 @@
       }
     }
   })
-  </script>
+</script>
+
 </html>

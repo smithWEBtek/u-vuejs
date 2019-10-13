@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>VueJS Excersize</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="exercise">
+    <h4>1) Start the Effect with the Button. The Effect should alternate the "highlight" or "shrink" class on each new
+      setInterval tick (attach respective class to the div with id "effect" below)</h4>
+    <button @click='startEffect()'>Start Effect</button>
+    <button @click='stopEffect()'>Stop Effect</button>
+    <div id="effect" :class="currentClass"></div>
+
+    <h4>2) Create a couple of CSS classes and attach them via the array syntax</h4>
+    <!-- cannot seem to get the array thing working via  :class='green, redBorder]' -->
+    <div class="redBorder green">
+      <p>I got no class :(</p>
+    </div>
+
+    <h4>3) Let the user enter a class (create some example classes) and attach it</h4>
+    <div :class="inputClassName">
+      <p>I got no class :(</p>
+      <p>class choices: 'redBorder', 'green' (type exactly, please)</p>
+      <input type="text" v-model='inputClassName'>
+      <p>{{ inputClassName }}</p>
+    </div>
+
+    <h4>4) Let the user enter a class and enter true/ false for another class (create some example classes) and attach
+      the classes</h4>
+    <div><input type="text"><input type="text">
+      <div></div>
+    </div>
+
+    <h4>5) Repeat 3) but now with values for styles (instead of class names). Attach the respective styles.</h4>
+    <div><input type="text">
+      <div></div>
+    </div>
+
+    <h4>6) Create a simple progress bar with setInterval and style bindings. Start it by hitting the below button.
+    </h4>
+    <div><button>Start Progress</button>
+      <div></div>
+    </div>
+  </div>
+
+  <script src='app.js'></script>
+</body>
+
+</html>

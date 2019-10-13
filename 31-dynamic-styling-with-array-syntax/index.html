@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,7 @@
   <title>VueJS</title>
 
 
-<style>
+  <style>
     .demo {
       background-color: lightgray;
       border: 2px dashed black;
@@ -54,15 +55,20 @@
 
     .explainer-text {
       padding: 5px;
+      font-style: italic;
     }
   </style>
 
 </head>
+
 <body>
   <div id="app">
 
-    <div class='demo' :style="{backgroundColor: 'pink', width: myStyle.width}">hard coded color and width from myStyle.width</div>
-    <div class='demo' :style="myStyle"><p class='explainer-text'>using myStyle for width and color from input </p></div>
+    <div class='demo' :style="{backgroundColor: 'pink', width: myStyle.width}">hard coded color and width from
+      myStyle.width</div>
+    <div class='demo' :style="myStyle">
+      <p class='explainer-text'>using myStyle for width and color from input </p>
+    </div>
     <div class='demo' :style="[myStyle, {height: myStyle.width}]">using myStyle.width to set height</div>
     <hr>
     <div>
@@ -74,7 +80,7 @@
     <input type=text v-model='color'>
     <input type=text v-model='width'>
     <hr>
-    </div>
+  </div>
 </body>
 
 <script>
@@ -89,24 +95,24 @@
       width: 150
     },
     methods: {
-      setWidth: function(){
+      setWidth: function () {
         this.width = myStyle.width
       },
-      increase: function(){
+      increase: function () {
         this.width += 3
       },
-      decrease: function(){
+      decrease: function () {
         this.width -= 3
       }
     },
     computed: {
-      toggleRedBlue: function(){
+      toggleRedBlue: function () {
         return {
           red: this.attachRed,
           blue: !this.attachRed
         }
       },
-      myStyle: function(){
+      myStyle: function () {
         return {
           backgroundColor: this.color,
           width: this.width + 'px'
@@ -115,4 +121,5 @@
     }
   })
 </script>
+
 </html>

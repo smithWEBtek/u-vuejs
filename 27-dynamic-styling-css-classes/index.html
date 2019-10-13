@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +9,9 @@
   <title>VueJS</title>
 
 
-<style>
+  <style>
     .demo {
-      background-color: lightgray;
+      background-color: rgb(178, 183, 184);
       border: 2px dashed black;
       height: 100px;
       width: 100px;
@@ -36,10 +37,12 @@
   </style>
 
 </head>
+
 <body>
   <div id="app">
+    <!-- true or false, should I attach a class ?, depends on value assigned in object -->
     <div class="demo" @click='attachRed = !attachRed' :class="{red: attachRed}">ASDF</div>
-    <div class="demo" @click='attachBlue = !attachBlue' :class="{blue: attachBlue}">ZXCV</div>
+    <div class="demo" @click='glarpKnarb = !glarpKnarb' :class="{blue: glarpKnarb}">ZXCV</div>
     <div class="demo" @click='attachGreen = !attachGreen' :class="{green: attachGreen}">QWER</div>
     <div class="demo" @click='attachYellow = !attachYellow' :class="{yellow: attachYellow}">SDFG</div>
   </div>
@@ -51,9 +54,10 @@
     data: {
       attachRed: false,
       attachGreen: false,
-      attachBlue: false,
+      glarpKnarb: false,
       attachYellow: false
     }
   })
-  </script>
+</script>
+
 </html>

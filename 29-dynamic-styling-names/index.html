@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,7 @@
   <title>VueJS</title>
 
 
-<style>
+  <style>
     .demo {
       background-color: lightgray;
       border: 2px dashed black;
@@ -36,12 +37,16 @@
   </style>
 
 </head>
+
 <body>
   <div id="app">
     <div class="demo" @click='attachRed = !attachRed' :class="toggleRedBlue">ASDF</div>
     <div class="demo" @click='attachBlue = !attachBlue' :class="{blue: attachBlue}">ZXCV</div>
     <div class="demo" @click='attachGreen = !attachGreen' :class="{green: attachGreen}">QWER</div>
-    <div class="demo" :class="[inputColor, {blue: attachBlue}]">SDFG</div>
+    <!-- passing an array of values to the class property, first true one wins -->
+    <div class="demo" :class="[inputColor, {blue: attachBlue}, 'red']">SDFG</div>
+    <!-- binding to :style, and enter a valid css color, regardless if in <style></style> listed -->
+    <div class="demo" :style="{backgroundColor: inputColor}">WERT</div>
     <input type=text v-model='inputColor'>
   </div>
 </body>
@@ -52,12 +57,12 @@
     data: {
       attachRed: false,
       attachGreen: false,
-      attachBlue: false,
+      attachBlue: true,
       attachYellow: false,
-      inputColor: 'gray'
+      inputColor: 'Ralphy'
     },
     computed: {
-      toggleRedBlue: function(){
+      toggleRedBlue: function () {
         return {
           red: this.attachRed,
           blue: !this.attachRed
@@ -65,5 +70,6 @@
       }
     }
   })
-  </script>
+</script>
+
 </html>
