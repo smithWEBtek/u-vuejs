@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>VueJS</title>
+</head>
+
+<style>
+  .blue {
+    color: blue;
+  }
+
+  .red {
+    color: red;
+  }
+
+  .green {
+    color: green;
+  }
+
+  .pink {
+    color: pink;
+  }
+</style>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(ingredient, i ) in ingredients">{{ ingredient }} ({{ i }})</li>
+      <template v-for="(ingredient, index) in ingredients">
+        <h3>{{ ingredient }}</h3>
+        <p>{{ index }}</p>
+      </template>
+
+      <hr>
+      <hr>
+      <li v-for="(person, i) in persons">{{ i + 1 }}: {{ person.name }} is age: {{ person.age }} with favorite color:
+        <span :class=`${person.color}`>{{ person.color }}</span>
+      </li>
+      <hr>
+      <hr>
+    </ul>
+    <ul>
+      <li v-for="person in persons">
+        <span v-for="(value, key) in person">{{ key }}: {{ value }}, </span>
+        <div v-for="(value, key, index) in person">{{ index }}: {{ key }}: {{ value }}</div>
+        <hr>
+      </li>
+    </ul>
+  </div>
+</body>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      ingredients: ['meat', 'fruit', 'cookies'],
+      persons: [
+        { name: 'Max', age: 27, color: 'red' },
+        { name: 'Anna', age: 'unknown', color: 'blue' },
+        { name: 'George', age: 42, color: 'green' },
+        { name: 'Lucy', age: 12, color: 'pink' },
+      ]
+    },
+    methods: {
+    }
+  })
+</script>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="../vue.js"></script>
+  <title>VueJS</title>
+</head>
+
+<style>
+  .blue {
+    color: blue;
+  }
+
+  .red {
+    color: red;
+  }
+
+  .green {
+    color: green;
+  }
+</style>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="ingredient in ingredients">{{ ingredient }}</li>
+      <li v-for="person in persons">{{ person.name }} is age: {{ person.age }} with favorite color:
+        <p :class=`${person.color}`>{{ person.color }}</p>
+      </li>
+    </ul>
+  </div>
+</body>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      ingredients: ['meat', 'fruit', 'cookies'],
+      persons: [
+        { name: 'Max', age: 27, color: 'red' },
+        { name: 'Anna', age: 'unknown', color: 'blue' },
+        { name: 'George', age: 42, color: 'green' }
+      ]
+    },
+    methods: {
+    }
+  })
+</script>
+
+</html>
