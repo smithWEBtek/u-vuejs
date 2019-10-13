@@ -25,3 +25,8 @@
 .green {
   background-color: green;
 }
+
+.progressBar {
+  width: 50px;
+  background-color: green;
+}
