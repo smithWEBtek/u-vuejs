@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="../vue.js"></script>
+  <script src="../..vue.js"></script>
   <title>VueJS</title>
 </head>
+
 <body>
   <div id="app">
     <h1>{{ title }}</h1>
@@ -14,9 +16,15 @@
     <h1>{{ counter }}</h1>
     <!-- notice $event a reserved varible provided by VueJS -->
     <!-- <button v-on:click='counterIncrease(2, $event)'><h1>+</h1></button> -->
-    <button v-on:click='counter+=3'><h1>+ by 3</h1></button>
-    <button v-on:click='counter*=3'><h1>X by 3</h1></button>
-    <button v-on:click='counter--'><h1>-</h1></button>
+    <button v-on:click='counter+=3'>
+      <h1>+ by 3</h1>
+    </button>
+    <button v-on:click='counter*=3'>
+      <h1>X by 3</h1>
+    </button>
+    <button v-on:click='counter--'>
+      <h1>-</h1>
+    </button>
     <hr>
     <p v-on:mousemove='updateCoordinates'>
       Coordinates: {{ x }} : {{ y }}
@@ -47,25 +55,26 @@
 
         this.x = event.clientX, this.y = event.clientY
       },
-      counterIncrease: function(amt, event) {
+      counterIncrease: function (amt, event) {
         console.log('event.clientX', event.clientX);
         this.counter += amt
       },
-      counterDecrease: function() {
+      counterDecrease: function () {
         console.log('counterDecrease ...');
         this.counter--
       },
-      dummy: function(event){
+      dummy: function (event) {
         event.stopPropagation()
       },
-      alertMe: function(event){
+      alertMe: function (event) {
         // alert('Hey you let a key up')
         alert('You hit the enter key.')
       },
-      consoleMe: function(event){
+      consoleMe: function (event) {
         console.log('You typed: ', event.target.value);
       }
     }
   })
 </script>
+
 </html>

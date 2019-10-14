@@ -1,14 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="../vue.js"></script>
+  <script src="../..vue.js"></script>
   <title>VueJS</title>
 
 
-<style>
+  <style>
     .demo {
       background-color: lightgray;
       border: 2px dashed black;
@@ -36,6 +37,7 @@
   </style>
 
 </head>
+
 <body>
   <div id="app">
     <div class='demo' :style="{backgroundColor: 'pink', width: 'width'}"></div>
@@ -58,13 +60,13 @@
       width: 100
     },
     computed: {
-      toggleRedBlue: function(){
+      toggleRedBlue: function () {
         return {
           red: this.attachRed,
           blue: !this.attachRed
         }
       },
-      myStyle: function(){
+      myStyle: function () {
         return {
           backgroundColor: this.color,
           width: this.width + 'px'
@@ -72,5 +74,6 @@
       }
     }
   })
-  </script>
+</script>
+
 </html>

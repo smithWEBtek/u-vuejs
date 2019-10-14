@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="../vue.js"></script>
+  <script src="../..vue.js"></script>
   <title>VueJS</title>
 </head>
+
 <body>
   <div id="app">
     <button v-on:click='increase'>Increase</button>
@@ -24,15 +26,16 @@
       result: ''
     },
     methods: {
-      increase: function(){
+      increase: function () {
         this.counter++;
         this.result = this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';
       },
-      decrease: function(){
+      decrease: function () {
         this.counter--;
         this.result = this.counter > 5 ? 'Greater than 5' : 'Smaller than 5';
       }
     }
   })
 </script>
+
 </html>

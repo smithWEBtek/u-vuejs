@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="../vue.js"></script>
+  <script src="../..vue.js"></script>
   <title>VueJS</title>
 </head>
+
 <body>
   <div id="app">
     <input type="text" v-on:input="changeTitle">
@@ -33,16 +35,16 @@
       counter: 0
     },
     methods: {
-      changeTitle: function(event){
+      changeTitle: function (event) {
         this.title = event.target.value
       },
-      sayHello: function(){
+      sayHello: function () {
         let theDate = new Date
 
         console.log('sayHello button mouse over event');
         console.log('date: ', theDate);
 
-        this.title=`${ this.counter++ }: Hello! today is: ${theDate.toLocaleDateString()}`
+        this.title = `${this.counter++}: Hello! today is: ${theDate.toLocaleDateString()}`
         return 'Hello!'
       }
     }
